@@ -1,37 +1,17 @@
 var express = require('express');
 var router = express.Router();
 var todos = require("../dummy/todos");
+var todoController = require('../controller/TodoController')
 
-router.get('/', function(req, res, next) {
-		res.json(todos);
-});
+router.get('/', todoController.getAllTodos);
 
-router.get('/:id', function (req, res, next) {
-		const id = req.params.id;
-		res.json({
-				id: id,
-				title: 'Test'
-		});
-});
+router.get('/:id', todoController.getTodoById);
 
-router.post('/', function (req, res, next) {
-		const todo = req.body;
-		res.status(201).json(todo);
-});
+router.post('/', todoController.saveTodo);
 
-router.put('/:id', function (req, res, next) {
-		const todo = req.body;
-		const id = req.params.id;
-		res.status(200).json(todo);
-});
+router.put('/:id', todoController.updateTodo);
 
-router.delete('/:id', function (req, res, next) {
-		const id = req.params.id;
-		res.status(200).json({
-				id: id,
-				message: 'successfully deleted'
-		});
-});
+router.delete('/:id', todoController.deleteTodo);
 
 
 module.exports = router;
