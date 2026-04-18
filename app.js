@@ -10,8 +10,14 @@ var usersRouter = require('./routes/users');
 var todosRouter = require('./routes/todos');
 var testRouter = require('./routes/test');
 
+const mongoose = require('mongoose');
+const {db } = require('./config/database')
+
 
 var app = express();
+
+mongoose.connect(db).then(() => console.log('Connected to MongoDB'))
+    .catch((err) => console.error(err));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

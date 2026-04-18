@@ -1,0 +1,28 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+// movie and director is 'Embedded Model'
+// movie and review is 'Reference Model'
+const MovieSchema = new Schema({
+	title: {
+			type: String,
+			required: true,
+	},
+		director: {
+			type: {
+					name: {
+							type: String,
+							required: true,
+					},
+					phoneNo: {
+							type: String,
+					}
+			},
+				required: false
+		},
+		year: {
+			type: Number,
+			required: true,
+		}
+});
+
+module.exports = mongoose.Model('Movie', MovieSchema)
