@@ -25,4 +25,4 @@ const MovieSchema = new Schema({
 		}
 });
 
-module.exports = mongoose.Model('Movie', MovieSchema)
+module.exports = mongoose.model('Movie', MovieSchema)
